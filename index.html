@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <main>
+        <h1 class="main-title">MusicaRock</h1>
+        <div class="player">
+            <div class="player-header">
+                <div class="banner" id="banner">
+                    <img id="banner-image" src="src/images/default.png" alt="Banner Image">
+                </div>
+                <div class="player-content">
+                    <div class="song-information" id="songInfo">
+                        <h3 class="song-title" id="player-song-title">Lorem, ipsum dolor.</h3>
+                        <p class="artist" id="player-song-artist">Lorem, ipsum.</p>
+                        <div class="progress-container">
+                            <div id="progress-bar"></div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        
+                        <div class="volume-control">
+                            <button class="volume-icon" aria-label="Volume control">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                            <div class="volume-slider">
+                                <input type="range" min="0" max="100" value="50" class="volume-range">
+                            </div>
+                        </div>
+
+                        <div class="main-buttons">
+                            <button id="previous" class="previous" aria-label="Previous">
+                                <i class="fa-solid fa-backward-step"></i>
+                            </button>
+                            
+                            <button id="play" class="play" aria-label="Play">
+                                <i class="fa-solid fa-play"></i>
+                            </button>
+                            
+                            <button id="next" class="next" aria-label="Next">
+                                <i class="fa-solid fa-forward-step"></i>
+                            </button>
+                        </div>
+
+                        <button id="shuffle" class="shuffle" aria-label="Shuffle">
+                            <i class="fa-solid fa-shuffle"></i>
+                        </button> 
+                    </div>
+                </div>
+            </div>
+            <div class="playlist">
+                <h2 class="playlist-title">Playlist</h2>
+                <ul id="playlist-songs" class="playlist-songs">
+                </ul>
+                <button id="reset" class="reset-button hidden">Reset</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/1e35e0cc2e.js" crossorigin="anonymous"></script>
+</body>
+</html>
