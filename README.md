@@ -19,11 +19,11 @@ This project is a fully functional music player application built using HTML, CS
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/your-repository-name.git
+   git clone https://github.com/nuribugra/musica-rocke.git
 
 2. Navigate to the project directory:
    ```bash
-   cd your-repository-name
+   cd musica-rock
 3. Open ``index.html`` in your preferred web browser to start using the application.
 
 ## Usage
