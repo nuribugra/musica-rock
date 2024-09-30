@@ -294,6 +294,15 @@ const progressBar = document.getElementById('progress-bar');
 
 let isDragging = false;
 
+function updateTime(event) {
+    const rect = progressBar.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const width = progressBar.clientWidth;
+    const newTime = (x / width) * audio.duration;
+    audio.currentTime = newTime;
+    updateProgressBar();
+}
+
 function updateProgressBar() {
     if (audio.duration) {
         const progress = (audio.currentTime / audio.duration) * 100;
@@ -302,31 +311,17 @@ function updateProgressBar() {
 }
 
 progressBar.addEventListener('click', (event) => {
-    const rect = progressBar.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const width = progressBar.clientWidth;
-    const newTime = (x / width) * audio.duration;
-    audio.currentTime = newTime;
+    updateTime(event);
 });
 
 progressBar.addEventListener('mousedown', (event) => {
     isDragging = true;
-    const rect = progressBar.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const width = progressBar.clientWidth;
-    const newTime = (x / width) * audio.duration;
-    audio.currentTime = newTime;
-    updateProgressBar();
+    updateTime(event);
 });
 
 document.addEventListener('mousemove', (event) => {
     if (isDragging) {
-        const rect = progressBar.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const width = progressBar.clientWidth;
-        const newTime = (x / width) * audio.duration;
-        audio.currentTime = newTime;
-        updateProgressBar();
+        updateTime(event);
     }
 });
 
@@ -347,13 +342,13 @@ const volumeIcon = document.querySelector(".volume-icon");
 const volumeRange = document.querySelector(".volume-range");
 let isMuted = false;
 
-// Ayarları güncelle
+// Update the settings
 function updateVolume(value) {
     audio.volume = value / 100;
     volumeRange.value = value;
 }
 
-// Mute fonksiyonu
+// Mute function
 function toggleMute() {
     if (isMuted) {
         audio.volume = 0.5; // veya istediğin bir default değer
@@ -378,8 +373,8 @@ volumeRange.addEventListener("input", (event) => {
 // Volume Icon Click Event
 volumeIcon.addEventListener("click", () => {
     if (isMuted) {
-        // Mute'dan çık
-        audio.volume = 0.5; // İstediğiniz default değer
+        // Exit from the mute condition
+        audio.volume = 0.5;
         volumeRange.value = 50;
         volumeIcon.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
     } else {
